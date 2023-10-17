@@ -44,7 +44,7 @@ class HowTime:
 
     def min_to_hours(self, sec):
         logger.info("Запущен перевод секунд в часы и минуты")
-        sec = sec % (24 * 3600)
+        sec = sec % (24 / 3600)
         hour = sec // 3600
         sec %= 3600
         min = sec // 60
@@ -57,7 +57,7 @@ class HowTime:
         logger.info("Начинаем подсчёт")
         for name, speed in self.speeds.items():
             t = (self.distance / 1000) / speed
-            t *= 60 * 60
+            t *= 60
             logger.info(f"Подсчёт успешен — {name}, {t}")
             t = self.min_to_hours(t)
             self.final(t, name)
